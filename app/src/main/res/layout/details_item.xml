@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="30dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginBottom="30dp"
+    android:background="@drawable/square_dox_design"
+    android:backgroundTint="#E9EAEA">
+
+    <TextView
+        android:id="@+id/txt_buy_sell"
+        android:layout_width="100dp"
+        android:layout_height="55dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/square_dox_design"
+        android:backgroundTint="#fff"
+        android:fontFamily="@font/arial_rounded_mt_bold_grassetto"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="buy"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/arial_rounded_mt_bold_grassetto" />
+
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/txt_buy_sell"
+        android:fontFamily="@font/arial_rounded_mt_bold_grassetto"
+        android:text="Title"
+        android:textColor="#000"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/arial_rounded_mt_bold_grassetto" />
+
+    <TextView
+        android:id="@+id/txt_above_below"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_title"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/txt_buy_sell"
+        android:fontFamily="@font/arial_rounded_mt_bold_grassetto"
+        android:text="Above"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/arial_rounded_mt_bold_grassetto" />
+
+    <TextView
+        android:id="@+id/txt_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_title"
+        android:layout_marginLeft="3dp"
+        android:layout_toRightOf="@+id/txt_above_below"
+        android:fontFamily="@font/arial_rounded_mt_bold_grassetto"
+        android:text="Price"
+        android:textColor="#000"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/arial_rounded_mt_bold_grassetto" />
+
+    <View
+        android:id="@+id/v1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/txt_price"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:background="#8B8B8B" />
+
+
+    <!--middle layout linearlayout-->
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/v1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
+
+        <!--linearlayout1-->
+        <!--<LinearLayout
+            android:id="@+id/ll2"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/square_dox_design"
+            android:orientation="vertical">-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv0"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:cardCornerRadius="5dp">
+
+            <TextView
+                android:id="@+id/txt_t1"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="#fff"
+                android:fontFamily="@font/arial_rounded_mt_bold_grassetto"
+                android:gravity="center"
+                android:text="target"
+                android:textColor="#000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/arial_rounded_mt_bold_grassetto" />
+
+            <TextView
+                android:id="@+id/txt_target1"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="50dp"
+                android:background="#000"
+                android:gravity="center"
+                android:text="Target-1"
+                android:textColor="#fff"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+        <!--
+                </LinearLayout>
+        -->
+
+
+        <!--linearlayout2-->
+        <!--    <LinearLayout
+                android:id="@+id/ll3"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/square_dox_design"
+                android:orientation="vertical">-->
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="5dp">
+
+            <TextView
+                android:id="@+id/txt_t2"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="#fff"
+                android:fontFamily="@font/arial_rounded_mt_bold_grassetto"
+                android:gravity="center"
+                android:text="target"
+                android:textColor="#000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/arial_rounded_mt_bold_grassetto" />
+
+            <TextView
+                android:id="@+id/txt_target2"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="50dp"
+                android:background="#000"
+                android:gravity="center"
+                android:text="Target-2"
+                android:textColor="#fff"
+                android:textStyle="bold" />
+
+        </androidx.cardview.widget.CardView>
+        <!--
+                </LinearLayout>
+        -->
+
+        <!--linearlayout3-->
+        <!--   <LinearLayout
+               android:id="@+id/ll4"
+               android:layout_width="100dp"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="15dp"
+               android:layout_weight="1"
+               android:background="@drawable/square_dox_design"
+               android:orientation="vertical">-->
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv2"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="5dp">
+
+            <TextView
+                android:id="@+id/txt_t3"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="#fff"
+                android:fontFamily="@font/arial_rounded_mt_bold_grassetto"
+                android:gravity="center"
+                android:text="target"
+                android:textColor="#000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/arial_rounded_mt_bold_grassetto" />
+
+            <TextView
+                android:id="@+id/txt_target3"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="50dp"
+                android:background="#000"
+                android:gravity="center"
+                android:text="Target-3"
+                android:textColor="#fff"
+                android:textStyle="bold" />
+
+        </androidx.cardview.widget.CardView>
+        <!--
+                </LinearLayout>
+        -->
+
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/ll1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#8B8B8B" />
+
+    <!-- <LinearLayout
+         android:id="@+id/ll5"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/v2"
+         android:layout_marginLeft="10dp"
+         android:layout_marginTop="20dp"
+         android:layout_marginRight="10dp"
+         android:orientation="horizontal"
+         android:background="@drawable/square_dox_design"
+         >-->
+
+
+    <!--<LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/v2"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">-->
+
+    <!--<RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/square_dox_design"
+        android:layout_below="@id/v2">-->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v2"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        app:cardCornerRadius="5dp">
+
+        <TextView
+            android:id="@+id/txt_sl"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#000"
+            android:fontFamily="@font/arial_rounded_mt_bold_grassetto"
+            android:gravity="center"
+            android:text="SL"
+            android:textColor="#FD0517"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/arial_rounded_mt_bold_grassetto" />
+
+        <TextView
+            android:id="@+id/txt_stoploss"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="50dp"
+            android:background="#fff"
+            android:fontFamily="@font/arial_rounded_mt_bold_grassetto"
+            android:gravity="center"
+            android:text="Target-1"
+            android:textColor="#000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/arial_rounded_mt_bold_grassetto" />
+    </androidx.cardview.widget.CardView>
+    <!--
+        </RelativeLayout>
+    -->
+    <!--
+            </LinearLayout>
+    -->
+
+    <!--
+        </LinearLayout>
+    -->
+
+    <!--
+        <TextView
+            android:id="@+id/txt_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll5"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="Status"
+            android:background="@drawable/square_dox_design"
+
+
+            />
+    -->
+
+    <!--  <LinearLayout
+          android:id="@+id/ll6"
+          android:layout_width="wrap_content"
+          android:layout_height="30dp"
+          android:layout_alignParentEnd="true"
+          android:layout_alignParentRight="true"
+          android:layout_toRightOf="@+id/cv"
+          android:layout_marginTop="250dp"
+          android:background="#000">-->
+
+    <TextView
+        android:id="@+id/txt_status"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@id/v2"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@id/cv"
+        android:fontFamily="@font/arial_rounded_mt_bold_grassetto"
+        android:gravity="center"
+        android:text="Status"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="45dp"
+        android:background="#000"
+        app:fontFamily="@font/arial_rounded_mt_bold_grassetto" />
+
+    <!--
+        </LinearLayout>
+    -->
+
+
+</RelativeLayout>
