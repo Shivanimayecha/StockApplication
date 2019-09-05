@@ -1,31 +1,24 @@
-package com.hd.nature.stockapplication;
+package com.hd.nature.stockapplication.activity;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.navigation.NavigationView;
-import com.hd.nature.stockapplication.activity.PastPerformanceActivity;
+import com.hd.nature.stockapplication.MainActivity;
+import com.hd.nature.stockapplication.R;
 import com.hd.nature.stockapplication.comman.NetworkConnection;
 import com.hd.nature.stockapplication.data_model.Details;
 import com.hd.nature.stockapplication.retrofit.ApiService;
@@ -36,10 +29,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -47,121 +37,42 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class PastPerformanceActivity extends AppCompatActivity {
 
     Activity activity;
     private String TAG = "TAG";
     ArrayList<Details> arrayList = new ArrayList<>();
     RecyclerView recyclerView;
     Detailsadapter detailsadapter;
-    DrawerLayout drawerLayout;
-    private Toolbar toolbar;
-    TextView date,day;
-
+    ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        activity = MainActivity.this;
+        setContentView(R.layout.activity_past_performance);
+        activity = PastPerformanceActivity.this;
         findViews();
         initViews();
-        initNavigationDrawer();
-
     }
 
     private void findViews() {
-        toolbar = findViewById(R.id.toolbar);
-        recyclerView = findViewById(R.id.recyclerview);
+        recyclerView = findViewById(R.id.recyclerview_pp);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        date = findViewById(R.id.txt_date);
-        day = findViewById(R.id.txt_day);
+        back = findViewById(R.id.img_back);
     }
 
-    private void initNavigationDrawer() {
-
-        final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-
-                int id = menuItem.getItemId();
-
-                switch (id) {
-
-                    case R.id.home:
-
-                        drawerLayout.closeDrawers();
-                        /*Intent in = new Intent(MainActivity.this,MainActivity.class);
-                        startActivity(in);*/
-                        break;
-
-                    case R.id.rateus:
-
-                        rateUs();
-
-                        break;
-                    case R.id.privacyPolicy:
-                        //  Toast.makeText(getApplicationContext(), "Privacy Policy", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.news:
-                        //   Toast.makeText(getApplicationContext(), "Terms & Condition", Toast.LENGTH_SHORT).show();
-                        break;
-
-                    case R.id.pastperformance:
-
-                        Intent intent = new Intent(MainActivity.this, PastPerformanceActivity.class);
-                        startActivity(intent);
-                }
-                return true;
-            }
-        });
-        View header = navigationView.getHeaderView(0);
-/*        TextView tv_email = (TextView)header.findViewById(R.id.tv_email);
-        tv_email.setText("raj.amalw@learn2crack.com");*/
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerlayout);
-
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout
-                , toolbar
-                , R.string.drawer_open
-                , R.string.drawer_close) {
-
-            @Override
-            public void onDrawerClosed(View v) {
-                super.onDrawerClosed(v);
-            }
-
-            @Override
-            public void onDrawerOpened(View v) {
-                super.onDrawerOpened(v);
-            }
-        };
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-    }
-
-
-
-    private void rateUs() {
-
-        final String appPackageName = getPackageName(); // getPackageName() from Context or Activity object
-        try {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
-        } catch (android.content.ActivityNotFoundException anfe) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
-        }
-    }
-
-    @TargetApi(Build.VERSION_CODES.O)
     private void initViews() {
 
-        String datedate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-        date.setText(datedate);
-        Calendar calendar = Calendar.getInstance();
-        Date date = calendar.getTime();
-        day.setText(new SimpleDateFormat("EEEE", Locale.ENGLISH).format(date.getTime()));
 
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                onBackPressed();
+            }
+        });
         if (NetworkConnection.isNetworkAvailable(activity)) {
 
             try {
@@ -219,13 +130,13 @@ public class MainActivity extends AppCompatActivity {
                 details.setTarget3(jsonobject.optString("target_3"));
                 details.setStoploss(jsonobject.optString("stoploss"));
                 details.setStatusMsg(jsonobject.getString("status_message"));
-                details.setCreatedAt(jsonobject.getString("created_at").substring(11,19));
+                details.setCreatedAt(jsonobject.getString("created_at").substring(0,10));
 
                 String date1 = jsonobject.getString("created_at").substring(0,10);
 
-                String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-                Log.e(TAG, "parseResponse: date"+date);
-                if (date1.equals(date)) {
+                String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+
+                if (!date1.equals(date)) {
 
                     Log.e(TAG, "parseResponse: "+date1+"----"+date);
                     arrayList.add(details);
@@ -233,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             }
-            detailsadapter = new Detailsadapter(MainActivity.this, arrayList);
+            detailsadapter = new Detailsadapter(PastPerformanceActivity.this, arrayList);
             recyclerView.setAdapter(detailsadapter);
 
         } catch (JSONException e) {
@@ -242,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
     class Detailsadapter extends RecyclerView.Adapter<Detailsadapter.ViewHolder> {
 
@@ -283,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         @Override
-        public void onBindViewHolder(@NonNull Detailsadapter.ViewHolder holder, int position) {
+        public void onBindViewHolder(Detailsadapter.ViewHolder holder, int position) {
 
             holder.title.setText(detailsArrayList.get(position).getTitle());
 
@@ -298,6 +210,7 @@ public class MainActivity extends AppCompatActivity {
                 holder.buysell.setTextColor(Color.parseColor("#FB1222"));
 
             }
+
             holder.price.setText(detailsArrayList.get(position).getPrice());
 
             String trgt1 = detailsArrayList.get(position).getT1();
@@ -410,5 +323,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
 
 }

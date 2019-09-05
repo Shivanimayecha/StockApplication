@@ -4,6 +4,25 @@ public class Details {
 
     String title;
     String id;
+    String createdAt,updatedAt;
+
+
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 
     public String getStatusMsg() {
         return statusMsg;
@@ -117,4 +136,6 @@ public class Details {
     public void setTarget1(String target1) {
         this.target1 = target1;
     }
+
+
 }
