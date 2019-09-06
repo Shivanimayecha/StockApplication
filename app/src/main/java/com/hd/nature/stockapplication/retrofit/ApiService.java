@@ -8,4 +8,7 @@ public interface ApiService {
 
     @GET("stocktips")
     Call<String> getDetails();
+
+    @GET("newsstock")
+    Call<String> getNews();
 }

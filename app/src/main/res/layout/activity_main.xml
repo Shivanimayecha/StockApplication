@@ -12,21 +12,30 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!--
-                <include layout="@layout/toolbar" />
-        -->
-        <androidx.appcompat.widget.Toolbar
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/toolbar"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:background="@color/Black"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark"
-            app:navigationIcon="@drawable/menu_icon"
-            app:title="Home"
-            app:titleTextColor="#FFF">
+            android:orientation="horizontal">
 
-        </androidx.appcompat.widget.Toolbar>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar0"
+                android:layout_width="100dp"
+                android:paddingLeft="10dp"
+                android:layout_height="wrap_content"
+                android:background="#000"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark"
+                app:navigationIcon="@drawable/menu_icon" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#000"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark"
+                app:title="Home"
+                android:paddingLeft="50dp"
+                app:titleTextColor="#fff" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

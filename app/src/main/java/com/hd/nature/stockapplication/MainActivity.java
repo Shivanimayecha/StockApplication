@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.hd.nature.stockapplication.activity.NewsActivity;
 import com.hd.nature.stockapplication.activity.PastPerformanceActivity;
 import com.hd.nature.stockapplication.comman.NetworkConnection;
 import com.hd.nature.stockapplication.data_model.Details;
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     Detailsadapter detailsadapter;
     DrawerLayout drawerLayout;
-    private Toolbar toolbar;
+    private Toolbar toolbar0,toolbar1;
     TextView date,day;
 
 
@@ -71,7 +72,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void findViews() {
-        toolbar = findViewById(R.id.toolbar);
+        toolbar0 = findViewById(R.id.toolbar0);
+        toolbar1 = findViewById(R.id.toolbar1);
+       // toolbar1 = findViewById(R.id.toolbar1);
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -106,6 +109,9 @@ public class MainActivity extends AppCompatActivity {
                         //  Toast.makeText(getApplicationContext(), "Privacy Policy", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.news:
+
+                        Intent in = new Intent(MainActivity.this, NewsActivity.class);
+                        startActivity(in);
                         //   Toast.makeText(getApplicationContext(), "Terms & Condition", Toast.LENGTH_SHORT).show();
                         break;
 
@@ -123,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerlayout);
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout
-                , toolbar
+                , toolbar0
                 , R.string.drawer_open
                 , R.string.drawer_close) {
 
@@ -153,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.O)
+   // @TargetApi(Build.VERSION_CODES.O)
     private void initViews() {
 
         String datedate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
@@ -239,9 +245,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
     }
+
 
     class Detailsadapter extends RecyclerView.Adapter<Detailsadapter.ViewHolder> {
 

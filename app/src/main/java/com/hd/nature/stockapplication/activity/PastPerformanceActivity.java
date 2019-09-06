@@ -1,22 +1,29 @@
 package com.hd.nature.stockapplication.activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.hd.nature.stockapplication.MainActivity;
 import com.hd.nature.stockapplication.R;
 import com.hd.nature.stockapplication.comman.NetworkConnection;
@@ -44,6 +51,8 @@ public class PastPerformanceActivity extends AppCompatActivity {
     ArrayList<Details> arrayList = new ArrayList<>();
     RecyclerView recyclerView;
     Detailsadapter detailsadapter;
+    //DrawerLayout drawerLayout;
+    Toolbar toolbar2;
     ImageView back;
 
     @Override
@@ -53,23 +62,22 @@ public class PastPerformanceActivity extends AppCompatActivity {
         activity = PastPerformanceActivity.this;
         findViews();
         initViews();
+
     }
 
     private void findViews() {
         recyclerView = findViewById(R.id.recyclerview_pp);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        toolbar2 = findViewById(R.id.toolbar);
         back = findViewById(R.id.img_back);
     }
 
     private void initViews() {
 
-
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 onBackPressed();
             }
         });
@@ -130,15 +138,15 @@ public class PastPerformanceActivity extends AppCompatActivity {
                 details.setTarget3(jsonobject.optString("target_3"));
                 details.setStoploss(jsonobject.optString("stoploss"));
                 details.setStatusMsg(jsonobject.getString("status_message"));
-                details.setCreatedAt(jsonobject.getString("created_at").substring(0,10));
+                details.setCreatedAt(jsonobject.getString("created_at").substring(0, 10));
 
-                String date1 = jsonobject.getString("created_at").substring(0,10);
+                String date1 = jsonobject.getString("created_at").substring(0, 10);
 
                 String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
 
                 if (!date1.equals(date)) {
 
-                    Log.e(TAG, "parseResponse: "+date1+"----"+date);
+                    Log.e(TAG, "parseResponse: " + date1 + "----" + date);
                     arrayList.add(details);
 
                 }
@@ -150,7 +158,6 @@ public class PastPerformanceActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
 
     }
 
@@ -174,7 +181,7 @@ public class PastPerformanceActivity extends AppCompatActivity {
 
         public class ViewHolder extends RecyclerView.ViewHolder {
 
-            public TextView title, buysell, price, t1, t2, t3, stoploss, status, abovebellow,dateD;
+            public TextView title, buysell, price, t1, t2, t3, stoploss, status, abovebellow, dateD;
 
 
             public ViewHolder(@NonNull View itemView) {
@@ -323,7 +330,5 @@ public class PastPerformanceActivity extends AppCompatActivity {
         }
 
     }
-
-
 
 }
